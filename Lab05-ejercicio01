@@ -2,12 +2,25 @@
 #include <iomanip>
 
 using namespace std;
+
+// Funcion de descuento: 10% si el monto es 100 o mas
+double aplicarDescuento(double monto) {
+    if (monto >= 100) {
+        cout << "El monto total a pagar es: Bs " << monto << endl;
+        cout << "Se aplicara un descuento del 10%." << endl;
+        monto = monto * 0.9;
+        cout << "Monto final a pagar con descuento: Bs " << monto << endl;
+    }
+    return monto;
+}
+
 int main() {
     char opcion;
     double kg;
     double total;
 
     do {
+    total = 0;
     cout << "=== SISTEMA DE COSTO DE TRANSPORTE ===" << endl;
     cout << "[L] La Paz/El Alto" << endl;
     cout << "[C] Cochabamba" << endl;
@@ -27,7 +40,7 @@ int main() {
             } else if (kg <= 2) {
                 total = 7; // Tarifa
             } else {
-                total = 7 + (kg - 2) * 3; 
+                total = 7 + (kg - 2) * 3;
             }
 
             if (kg > 0) cout << "Monto total a pagar: Bs " << total << endl;
@@ -72,15 +85,11 @@ int main() {
 
         default:
             cout << "Opcion invalida. Por favor, selecciona una letra valida." << endl;
-
             break;
     }
-   if (total >=100) {
-        cout << "El monto total a pagar es: Bs " << total << endl;
-        cout << "Se aplicara un descuento del 10%." << endl;
-        total = total * 0.9; //Descuento del 10%
-        cout << "Monto final a pagar con descuento: Bs " << total << endl;
-    }
+
+    // Descuento (usa la funcion)
+    total = aplicarDescuento(total);
 
 } while (opcion != 'X' && opcion != 'x');
 
