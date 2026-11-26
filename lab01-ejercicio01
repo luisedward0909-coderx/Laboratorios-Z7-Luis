@@ -1,0 +1,58 @@
+#include <iostream>
+
+using namespace std;
+
+void leerPeso(double &peso);
+void calcularCosto(double peso, double &costo);
+void mostrarResultado(double peso, double costo);
+
+int main() {
+    double peso;
+    double costo;
+
+    peso = 0.0;
+    costo = 0.0;
+
+    leerPeso(peso);
+    calcularCosto(peso, costo);
+    mostrarResultado(peso, costo);
+
+    return 0;
+}
+
+void leerPeso(double &peso) {
+    cout << "Ingrese el peso de la carta en gramos: ";
+    cin >> peso;
+}
+
+void calcularCosto(double peso, double &costo) {
+    if (peso <= 0.0) {
+        costo = -1.0;
+    } else if (peso < 50.0) {
+        costo = 1.50;
+    } else if (peso == 50.0) {
+        costo = -2.0;
+    } else if (peso <= 100.0) {
+        costo = 4.00;
+    } else if (peso <= 200.0) {
+        costo = 6.00;
+    } else if (peso <= 350.0) {
+        costo = 10.50;
+    } else if (peso <= 500.0) {
+        costo = 15.00;
+    } else {
+        costo = -3.0;
+    }
+}
+
+void mostrarResultado(double peso, double costo) {
+    if (costo == -1.0) {
+        cout << "Peso no valido" << endl;
+    } else if (costo == -2.0) {
+        cout << "Tarifa no definida para 50 g" << endl;
+    } else if (costo == -3.0) {
+        cout << "NO PUEDE ENVIAR COMO CARTA" << endl;
+    } else {
+        cout << "Peso: " << peso << " g - Costo de envio: Bs " << costo << endl;
+    }
+}
