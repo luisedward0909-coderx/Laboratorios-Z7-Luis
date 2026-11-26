@@ -1,0 +1,25 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    float valor;       // precio de cada producto
+    int unidades;      // cuantos productos se compran
+    float subtotal, rebaja, pagar;
+
+    cout << "Digite el precio del producto: ";
+    cin >> valor;
+    cout << "Digite cuantas unidades compro: ";
+    cin >> unidades;
+
+    // calculos
+    subtotal = valor * unidades;
+    rebaja = subtotal * 0.10;   // 10% de descuento
+    pagar = subtotal - rebaja;
+
+    cout << endl << "--- Detalle de la compra ---" << endl;
+    cout << "Subtotal: " << subtotal << endl;
+    cout << "Descuento del 10%: " << rebaja << endl;
+    cout << "Total a pagar: " << pagar << endl;
+
+    return 0;
+}
