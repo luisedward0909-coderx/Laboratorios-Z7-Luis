@@ -1,0 +1,61 @@
+#include <iostream>
+using namespace std;
+
+// pide el numero y repite hasta que sea positivo
+int pedirNumero() {
+    int num;
+    cout << "Digite un numero entero positivo: ";
+    cin >> num;
+
+    while (num <= 0) {
+        cout << "Tiene que ser positivo, intente otra vez: ";
+        cin >> num;
+    }
+
+    return num;
+}
+
+// recorre las cifras y busca la mayor, la menor y la suma de las pares
+void revisarCifras(int num, int &grande, int &chico, int &totalPares) {
+    int cifra;
+    grande = num % 10;
+    chico = num % 10;
+    totalPares = 0;
+
+    while (num > 0) {
+        cifra = num % 10;
+
+        if (cifra > grande) {
+            grande = cifra;
+        }
+
+        if (cifra < chico) {
+            chico = cifra;
+        }
+
+        if (cifra % 2 == 0) {
+            totalPares += cifra;
+        }
+
+        num = num / 10;
+    }
+}
+
+void imprimirResultados(int grande, int chico, int totalPares) {
+    cout << "Cifra mayor: " << grande << endl;
+    cout << "Cifra menor: " << chico << endl;
+    cout << "Suma de cifras pares: " << totalPares << endl;
+}
+
+int main() {
+    int numero;
+    int grande = 0;
+    int chico = 0;
+    int totalPares = 0;
+
+    numero = pedirNumero();
+    revisarCifras(numero, grande, chico, totalPares);
+    imprimirResultados(grande, chico, totalPares);
+
+    return 0;
+}
