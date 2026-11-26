@@ -1,0 +1,52 @@
+#include <iostream>
+#include <iomanip>
+#include <string>
+using namespace std;
+
+int main() {
+    // variables
+    double consumo, monto = 0.0, cargoFijo = 10.00, pagar = 0.0;
+    string tipo = "";
+    string cliente;
+
+    // pedir datos
+    cout << "Digite su nombre: ";
+    cin >> cliente;
+
+    cout << "Digite el consumo en metros: ";
+    cin >> consumo;
+
+    // revisar el consumo
+    if (consumo < 0) {
+        cout << "Error: el consumo no puede ser negativo." << endl;
+    } else if (consumo == 0) {
+        pagar = monto + cargoFijo;
+        cout << "No hay consumo registrado" << endl;
+        cout << "Total a pagar: " << pagar << endl;
+    } else {
+        // tarifa segun el rango de consumo
+        if (consumo <= 15) {
+            monto = consumo * 1.20;
+            tipo = "Consumo Minimo";
+        } else if (consumo <= 35) {
+            monto = consumo * 2.50;
+            tipo = "Consumo Domestico";
+        } else if (consumo <= 70) {
+            monto = consumo * 4.00;
+            tipo = "Consumo Comercial";
+        } else {
+            monto = consumo * 6.50;
+            tipo = "Consumo Industrial";
+        }
+
+        // sumar el cargo fijo
+        pagar = monto + cargoFijo;
+
+        // mostrar resultado
+        cout << fixed << setprecision(2);
+        cout << "Categoria: " << tipo << endl;
+        cout << "Monto a pagar: Bs " << pagar << endl;
+    }
+
+    return 0;
+}
