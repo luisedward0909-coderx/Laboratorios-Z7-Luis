@@ -1,0 +1,67 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+void pedirCoeficientes(double &p, double &q, double &r);
+double sacarDiscriminante(double p, double q, double r);
+void sacarRaices(double p, double q, double disc, double &sol1, double &sol2);
+void imprimirResultado(double p, double disc, double sol1, double sol2);
+
+int main() {
+    double a = 0.0, b = 0.0, c = 0.0;
+    double disc = 0.0;
+    double x1 = 0.0, x2 = 0.0;
+
+    pedirCoeficientes(a, b, c);
+
+    // si a es 0 ya no es cuadratica
+    if (a != 0.0) {
+        disc = sacarDiscriminante(a, b, c);
+        if (disc >= 0.0) {
+            sacarRaices(a, b, disc, x1, x2);
+        }
+    }
+
+    imprimirResultado(a, disc, x1, x2);
+
+    return 0;
+}
+
+void pedirCoeficientes(double &p, double &q, double &r) {
+    cout << "Digite el valor de a: ";
+    cin >> p;
+    cout << "Digite el valor de b: ";
+    cin >> q;
+    cout << "Digite el valor de c: ";
+    cin >> r;
+}
+
+// b^2 - 4ac
+double sacarDiscriminante(double p, double q, double r) {
+    return (q * q) - (4.0 * p * r);
+}
+
+// formula general para las dos soluciones
+void sacarRaices(double p, double q, double disc, double &sol1, double &sol2) {
+    double raiz = sqrt(disc);
+
+    if (disc == 0.0) {
+        sol1 = -q / (2.0 * p);
+        sol2 = sol1;
+    } else {
+        sol1 = (-q + raiz) / (2.0 * p);
+        sol2 = (-q - raiz) / (2.0 * p);
+    }
+}
+
+void imprimirResultado(double p, double disc, double sol1, double sol2) {
+    if (p == 0.0) {
+        cout << "No es una ecuacion cuadratica (a vale 0)" << endl;
+    } else if (disc > 0.0) {
+        cout << "Tiene dos soluciones reales distintas: x1 = " << sol1 << " y x2 = " << sol2 << endl;
+    } else if (disc == 0.0) {
+        cout << "Tiene una solucion real doble: x1 = " << sol1 << " y x2 = " << sol2 << endl;
+    } else {
+        cout << "No tiene soluciones reales" << endl;
+    }
+}
