@@ -1,0 +1,38 @@
+#include <iostream>
+
+using namespace std;
+
+void leerVentas(double &v1, double &v2, double &v3, double &v4, double &v5) {
+    cout << "Ingrese la venta del dia 1: ";
+    cin >> v1;
+    cout << "Ingrese la venta del dia 2: ";
+    cin >> v2;
+    cout << "Ingrese la venta del dia 3: ";
+    cin >> v3;
+    cout << "Ingrese la venta del dia 4: ";
+    cin >> v4;
+    cout << "Ingrese la venta del dia 5: ";
+    cin >> v5;
+}
+
+void procesarVentas(double v1, double v2, double v3, double v4, double v5, double &total, double &promedio, int &diasSuperiores) {
+    total = v1 + v2 + v3 + v4 + v5;
+    promedio = total / 5.0;
+    diasSuperiores = 0;
+
+    if (v1 > promedio) {
+        diasSuperiores = diasSuperiores + 1;
+    }
+    if (v2 > promedio) {
+        diasSuperiores = diasSuperiores + 1;
+    }
+    if (v3 > promedio) {
+        diasSuperiores = diasSuperiores + 1;
+    }
+    if (v4 > promedio) {
+        diasSuperiores = diasSuperiores + 1;
+    }
+    if (v5 > promedio) {
+        diasSuperiores = diasSuperiores + 1;
+    }
+}
