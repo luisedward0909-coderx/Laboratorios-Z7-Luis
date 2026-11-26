@@ -1,0 +1,22 @@
+Algoritmo ServirCafe
+	Definir respuestaAzucar Como Caracter
+	
+	Escribir "PROCESO PARA SERVIR UN CAFÉ"
+	Escribir "Presiona Enter para comenzar a preparar tu café..."
+	Esperar Tecla
+	
+	Escribir "Paso 1: Tomar una taza limpia y colocarla debajo de la cafetera."
+	Escribir "Paso 2: Tomar la jarra y servir el café preparado en la taza."
+	
+	Escribir "¿Deseas agregar azúcar? (S/N):"
+	Leer respuestaAzucar
+	
+	Si Mayusculas(respuestaAzucar) = "S" Entonces
+		Escribir "Paso 3: Agregar una cucharada de azúcar a la taza."
+		Escribir "Paso 4: Mezclar bien con una cuchara."
+	Sino
+		Escribir "Paso 3: Omitir azúcar."
+	FinSi
+	
+	Escribir "¡Listo! Tu taza de café está servida y lista para consumir."
+FinAlgoritmo
