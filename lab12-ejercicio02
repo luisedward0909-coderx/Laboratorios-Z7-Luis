@@ -1,0 +1,77 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+void leerCantidad(int &n) {
+    cout << "Ingrese la cantidad de preguntas: " << endl;
+    cin >> n;
+    cin.ignore();
+
+    while (n <= 0 || n > 100) {
+        cout << "Cantidad invalida. Ingrese un valor entre 1 y 100: " << endl;
+        cin >> n;
+        cin.ignore();
+    }
+}
+
+bool esPreguntaValida(string texto) {
+    int largo;
+    string espacio;
+
+    largo = texto.length();
+    espacio = " ";
+
+    if (largo == 0) {
+        return false;
+    }
+
+    if (texto.substr(0, 1).compare(espacio) == 0 || texto.at(0) == ' ') {
+        return false;
+    }
+
+    if (texto.substr(largo - 1, 1).compare(espacio) == 0 || texto.at(largo - 1) == ' ') {
+        return false;
+    }
+
+    return true;
+}
+
+void registrarPreguntas(string preguntas[], int n) {
+    int i;
+    string entrada;
+
+    for (i = 0; i < n; i++) {
+        cout << "Pregunta " << (i + 1) << ": " << endl;
+        getline(cin, entrada);
+
+        while (!esPreguntaValida(entrada)) {
+            cout << "Pregunta invalida. No debe estar vacia ni tener espacios al inicio o al final. Intente de nuevo: " << endl;
+            getline(cin, entrada);
+        }
+
+        preguntas[i] = entrada;
+    }
+}
+
+void mostrarPreguntas(string preguntas[], int n) {
+    int i;
+
+    cout << "PREGUNTAS REGISTRADAS" << endl;
+    for (i = 0; i < n; i++) {
+        cout << (i + 1) << ". " << preguntas[i] << endl;
+    }
+}
+
+int main() {
+    int n;
+    string preguntas[100];
+
+    n = 0;
+
+    leerCantidad(n);
+    registrarPreguntas(preguntas, n);
+    mostrarPreguntas(preguntas, n);
+
+    return 0;
+}
