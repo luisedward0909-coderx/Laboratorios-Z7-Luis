@@ -1,0 +1,79 @@
+#include <iostream>
+using namespace std;
+
+// pide los dias y repite hasta que sea mayor a 0
+int pedirDias() {
+    int cantDias;
+    cout << "Digite cuantos dias va a evaluar: ";
+    cin >> cantDias;
+
+    while (cantDias <= 0) {
+        cout << "Tiene que ser mayor a 0, intente otra vez: ";
+        cin >> cantDias;
+    }
+
+    return cantDias;
+}
+
+// dice que tipo de venta fue segun el monto
+void tipoDeVenta(double monto) {
+    if (monto > 1000.0) {
+        if (monto > 2000.0) {
+            cout << "Tipo: Venta excelente" << endl;
+        } else {
+            cout << "Tipo: Venta alta" << endl;
+        }
+    } else {
+        if (monto < 500.0) {
+            cout << "Tipo: Venta baja" << endl;
+        } else {
+            cout << "Tipo: Venta regular" << endl;
+        }
+    }
+}
+
+// pide la venta de cada dia y calcula total, promedio y dias con mas de 1000
+void revisarVentas(int cantDias, double &total, double &promedio, int &diasAltos) {
+    double monto;
+    total = 0.0;
+    diasAltos = 0;
+
+    for (int i = 1; i <= cantDias; i++) {
+        cout << "Digite lo vendido el dia " << i << " (Bs): ";
+        cin >> monto;
+
+        while (monto < 0.0) {
+            cout << "No puede ser negativo, digite otra vez: ";
+            cin >> monto;
+        }
+
+        tipoDeVenta(monto);
+
+        total += monto;
+
+        if (monto > 1000.0) {
+            diasAltos++;
+        }
+    }
+
+    promedio = total / cantDias;
+}
+
+void imprimirResultados(double total, double promedio, int diasAltos) {
+    cout << "Total vendido: Bs " << total << endl;
+    cout << "Promedio por dia: Bs " << promedio << endl;
+    cout << "Dias con ventas mayores a Bs 1000: " << diasAltos << endl;
+}
+
+int main() {
+    int dias;
+    double total = 0.0;
+    double promedio = 0.0;
+    int diasAltos = 0;
+
+    dias = pedirDias();
+    revisarVentas(dias, total, promedio, diasAltos);
+    imprimirResultados(total, promedio, diasAltos);
+
+    return 0;
+}
