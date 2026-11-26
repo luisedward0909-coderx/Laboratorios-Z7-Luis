@@ -1,0 +1,88 @@
+#include <iostream>
+#include <iomanip>
+
+using namespace std;
+int main() {
+    char opcion;
+    double kg;
+    double total;
+
+    do {
+    cout << "=== SISTEMA DE COSTO DE TRANSPORTE ===" << endl;
+    cout << "[L] La Paz/El Alto" << endl;
+    cout << "[C] Cochabamba" << endl;
+    cout << "[S] Santa Cruz" << endl;
+    cout << "[X] Salir del sistema" << endl;
+    cout << "Seleccione una categoria (L/C/S/X): ";
+    cin >> opcion;
+
+    switch (opcion) {
+        case 'L':
+        case 'l':
+            cout << "Ingrese la cantidad de Kg: ";
+            cin >> kg;
+
+            if (kg <= 0) {
+                cout << "Cantidad de kg invalida." << endl;
+            } else if (kg <= 2) {
+                total = 7; // Tarifa
+            } else {
+                total = 7 + (kg - 2) * 3; 
+            }
+
+            if (kg > 0) cout << "Monto total a pagar: Bs " << total << endl;
+            break;
+
+        case 'C':
+        case 'c':
+            cout << "Ingrese la cantidad de kg de viaje: ";
+            cin >> kg;
+
+            if (kg <= 0) {
+                cout << "Cantidad de kg invalida." << endl;
+            } else if (kg <= 2) {
+                total = 5;
+            } else {
+                total = 5 + (kg - 2) * 2;
+            }
+
+            if (kg > 0) cout << "Monto total a pagar: Bs " << total << endl;
+            break;
+
+        case 'S':
+        case 's':
+            cout << "Ingrese la cantidad de kg: ";
+            cin >> kg;
+
+            if (kg <= 0) {
+                cout << "Cantidad de kg invalida." << endl;
+            } else if (kg <= 2) {
+                total = 8;
+            } else {
+                total = 8 + (kg - 2) * 4;
+            }
+
+            if (kg > 0) cout << "Monto total a pagar: Bs " << total << endl;
+            break;
+
+        case 'X':
+        case 'x':
+            cout << "Saliendo del sistema..." << endl;
+            break;
+
+        default:
+            cout << "Opcion invalida. Por favor, selecciona una letra valida." << endl;
+
+            break;
+    }
+   if (total >=100) {
+        cout << "El monto total a pagar es: Bs " << total << endl;
+        cout << "Se aplicara un descuento del 10%." << endl;
+        total = total * 0.9; //Descuento del 10%
+        cout << "Monto final a pagar con descuento: Bs " << total << endl;
+    }
+
+} while (opcion != 'X' && opcion != 'x');
+
+return 0;
+}
