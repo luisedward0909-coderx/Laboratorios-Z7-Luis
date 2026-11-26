@@ -1,0 +1,57 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main() {
+    // variables
+    string alumno;
+    int anios;
+    string especialidad;
+    int nivel;
+    float nota;
+
+    // pedir datos
+    cout << "REGISTRO DE ESTUDIANTE" << endl;
+
+    cout << "Digite el nombre del estudiante: ";
+    getline(cin, alumno);
+
+    cout << "Digite la edad: ";
+    cin >> anios;
+
+    cin.ignore();   // limpia el Enter que queda antes del getline
+
+    cout << "Digite la carrera: ";
+    getline(cin, especialidad);
+
+    cout << "Digite el semestre: ";
+    cin >> nivel;
+
+    cout << "Digite el promedio: ";
+    cin >> nota;
+
+    // mostrar datos
+    cout << endl << "DATOS INGRESADOS" << endl;
+    cout << "Nombre: " << alumno << endl;
+    cout << "Edad: " << anios << endl;
+
+    // revisar si es mayor de edad
+    if (anios >= 18) {
+        cout << "Es mayor de edad" << endl;
+    } else {
+        cout << "Es menor de edad" << endl;
+    }
+
+    cout << "Carrera: " << especialidad << endl;
+    cout << "Semestre: " << nivel << endl;
+    cout << "Promedio: " << nota << endl;
+
+    // revisar si aprobo
+    if (nota >= 51) {
+        cout << "APROBADO" << endl;
+    } else {
+        cout << "REPROBADO" << endl;
+    }
+
+    return 0;
+}
