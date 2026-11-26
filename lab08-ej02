@@ -1,0 +1,67 @@
+#include <iostream>
+
+using namespace std;
+
+int leerNumero() {
+    int n;
+    cout << "Ingrese un numero entero positivo N: ";
+    cin >> n;
+
+    while (n <= 0) {
+        cout << "Debe ingresar un entero positivo. Intente nuevamente: ";
+        cin >> n;
+    }
+
+    return n;
+}
+
+int sumarHastaN(int n) {
+    int suma = 0;
+
+    for (int i = 1; i <= n; i++) {
+        suma = suma + i;
+    }
+
+    return suma;
+}
+
+int contarDigitos(int n) {
+    int contador = 0;
+
+    while (n > 0) {
+        contador = contador + 1;
+        n = n / 10;
+    }
+
+    return contador;
+}
+
+int sumarDigitos(int n) {
+    int suma = 0;
+    int digito;
+
+    do {
+        digito = n % 10;
+        suma = suma + digito;
+        n = n / 10;
+    } while (n > 0);
+
+    return suma;
+}
+
+void mostrarResultados(int sumaN, int cantidadDigitos, int sumaDig) {
+    cout << "Suma desde 1 hasta N: " << sumaN << endl;
+    cout << "Cantidad de digitos: " << cantidadDigitos << endl;
+    cout << "Suma de sus digitos: " << sumaDig << endl;
+}
+
+int main() {
+    int n = leerNumero();
+    int sumaN = sumarHastaN(n);
+    int cantidadDigitos = contarDigitos(n);
+    int sumaDig = sumarDigitos(n);
+
+    mostrarResultados(sumaN, cantidadDigitos, sumaDig);
+
+    return 0;
+}
