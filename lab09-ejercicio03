@@ -1,0 +1,43 @@
+#include <iostream>
+using namespace std;
+
+void pedirNumero(int &num);
+void separarCifras(int num, int &uni, int &dec, int &cen, int &mil);
+void imprimirCifras(int uni, int dec, int cen, int mil);
+
+int main() {
+    int numero = 0;
+    int unidad = 0, decena = 0, centena = 0, millar = 0;
+
+    pedirNumero(numero);
+    separarCifras(numero, unidad, decena, centena, millar);
+    imprimirCifras(unidad, decena, centena, millar);
+
+    return 0;
+}
+
+// pide un numero entre 1 y 9999
+void pedirNumero(int &num) {
+    cout << "Digite un numero entero positivo menor a 10000: ";
+    cin >> num;
+
+    while (num < 1 || num >= 10000) {
+        cout << "Fuera de rango, digite un valor entre 1 y 9999: ";
+        cin >> num;
+    }
+}
+
+// saca cada cifra con division y residuo
+void separarCifras(int num, int &uni, int &dec, int &cen, int &mil) {
+    mil = num / 1000;
+    cen = (num / 100) % 10;
+    dec = (num / 10) % 10;
+    uni = num % 10;
+}
+
+void imprimirCifras(int uni, int dec, int cen, int mil) {
+    cout << "Millares: " << mil << endl;
+    cout << "Centenas: " << cen << endl;
+    cout << "Decenas: " << dec << endl;
+    cout << "Unidades: " << uni << endl;
+}
