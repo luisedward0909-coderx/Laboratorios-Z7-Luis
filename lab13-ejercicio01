@@ -1,0 +1,43 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+void pedirDatos(string &nom, string &ape);
+string juntarNombre(string nom, string ape);
+int contarLetras(string nom, string ape);
+void imprimirDatos(string completo, int letras);
+
+int main() {
+    string nombre, apellido, completo;
+    int letras;
+
+    pedirDatos(nombre, apellido);
+    completo = juntarNombre(nombre, apellido);
+    letras = contarLetras(nombre, apellido);
+    imprimirDatos(completo, letras);
+
+    return 0;
+}
+
+// pide el nombre y el apellido (getline para aceptar espacios)
+void pedirDatos(string &nom, string &ape) {
+    cout << "Digite su nombre: ";
+    getline(cin, nom);
+    cout << "Digite su apellido: ";
+    getline(cin, ape);
+}
+
+// une nombre y apellido con un espacio en medio
+string juntarNombre(string nom, string ape) {
+    return nom + " " + ape;
+}
+
+// suma las letras del nombre y del apellido (sin contar el espacio)
+int contarLetras(string nom, string ape) {
+    return nom.length() + ape.length();
+}
+
+void imprimirDatos(string completo, int letras) {
+    cout << endl;
+    cout << "Nombre completo: " << completo << " | Cantidad de letras: " << letras << endl;
+}
