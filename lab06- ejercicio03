@@ -1,0 +1,37 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int numero;
+    int cifra;
+    int contador = 0;       
+    int cantMayores = 0;    
+    int sumaMayores = 0;    
+
+    cout << "Digite un numero entero positivo: ";
+    cin >> numero;
+
+    if (numero <= 0) {
+        cout << "Error: el numero debe ser positivo." << endl;
+        return 0;
+    }
+
+    // se separa cada cifra con % 10 y luego se divide entre 10
+    while (numero > 0) {
+        cifra = numero % 10;
+        contador++;
+
+        if (cifra > 5) {
+            cantMayores++;
+            sumaMayores += cifra;
+        }
+
+        numero = numero / 10;
+    }
+
+    cout << "Total de cifras: " << contador << endl;
+    cout << "Cifras mayores a 5: " << cantMayores << endl;
+    cout << "Suma de las cifras mayores a 5: " << sumaMayores << endl;
+
+    return 0;
+}
