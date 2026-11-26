@@ -1,0 +1,41 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+// busca la palabra dentro del texto y devuelve la posicion donde empieza
+// si no la encuentra devuelve -1
+int buscarPalabra(string palabra, string texto) {
+    int posicion;
+    string trozo;
+
+    // si alguno esta vacio no hay nada que buscar
+    if (palabra.length() == 0 || texto.size() == 0) {
+        return -1;
+    }
+
+    posicion = texto.find(palabra);
+
+    if (posicion == -1) {
+        return -1;
+    }
+
+    // se corta ese pedazo del texto para comprobar que sea igual
+    trozo = texto.substr(posicion, palabra.length());
+
+    if (trozo == palabra) {
+        return posicion;
+    }
+
+    return -1;
+}
+
+int main() {
+    string palabra = "mundo";
+    string texto = "hola mundo nuevo";
+    int respuesta;
+
+    respuesta = buscarPalabra(palabra, texto);
+    cout << "Posicion encontrada: " << respuesta << endl;
+
+    return 0;
+}
