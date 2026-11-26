@@ -1,0 +1,22 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    double lado1, lado2;   // base y altura del rectángulo
+    double superficie, contorno;
+
+    cout << "Digite la base del rectangulo: ";
+    cin >> lado1;
+    cout << "Digite la altura del rectangulo: ";
+    cin >> lado2;
+
+    // formulas
+    superficie = lado1 * lado2;
+    contorno = 2 * lado1 + 2 * lado2;
+
+    cout << endl << "--- Resultados ---" << endl;
+    cout << "Area: " << superficie << endl;
+    cout << "Perimetro: " << contorno << endl;
+
+    return 0;
+}
